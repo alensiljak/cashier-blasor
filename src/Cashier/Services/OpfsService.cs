@@ -59,7 +59,7 @@ namespace Cashier.Services
             return content;
         }
 
-        public async Task SaveToFile(string fileName, string content)
+        public async Task SaveFile(string fileName, string content)
         {
             using var stream = await OpenWritable(fileName, true);
             await stream.WriteAsync(content);

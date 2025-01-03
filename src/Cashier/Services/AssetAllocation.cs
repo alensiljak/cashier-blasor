@@ -12,7 +12,7 @@ namespace Cashier.Services
     /// </summary>
     public class AssetAllocationService
     {
-        public List<AssetClass> Classes = [];
+        public List<AssetClass> assetClasses = [];
 
         private Dictionary<string, AssetClass> _assetClassIndex = [];
         private Dictionary<string, string> _stockIndex = []; // symbol / asset class
@@ -107,7 +107,7 @@ namespace Cashier.Services
         {
             // load definition
             //await LoadAssetAllocation();
-            Classes = ParseDefinition(toml);
+            this.assetClasses = ParseDefinition(toml);
 
             // build asset class index
             _assetClassIndex = BuildAssetClassIndex();

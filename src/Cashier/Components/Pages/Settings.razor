@@ -152,7 +152,7 @@
 
         // Save to OPFS.
         var opfs = new OpfsService(StorageManagerService);
-        await opfs.SaveToFile(Constants.AssetAllocationFilename, content);
+        await opfs.SaveFile(Constants.AssetAllocationFilename, content);
 
         // Reset cached AA
         _state.ResetAaCache();
