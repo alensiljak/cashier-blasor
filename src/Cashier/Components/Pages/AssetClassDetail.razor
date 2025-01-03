@@ -159,7 +159,7 @@ else
         _assetClass = _assetAllocation.Find(ac => ac.FullName == fullname) ?? new AssetClass();
 
         var stocks = PopulateStocksWithCaching();
-        _stocks = stocks
+        _stocks = stocks;
     }
 
     async Task LoadAssetAllocation()
@@ -181,7 +181,7 @@ else
         _assetAllocation = aa.Classes;
     }
 
-    void PopulateStocksWithCaching()
+    List<StockSymbol> PopulateStocksWithCaching()
     {
         var stocks = PopulateStocks();
 
@@ -224,7 +224,7 @@ else
         //     }
         // }
 
-        return stocks
+        return stocks;
     }
 
     /// <summary>
@@ -232,11 +232,12 @@ else
     /// </summary>
     List<StockSymbol> PopulateStocks()
     {
+        var stocks = new List<StockSymbol>();
+        
         var childNames = _assetClass?.Symbols;
-        if (childNames is null) return;
-        if (childNames.Count == 0) return;
+        if (childNames is null) return stocks;
+        if (childNames.Count == 0) return stocks;
 
-        var stocks = new List<StockSymbol>()
 
         foreach (var childName in childNames)
         {
@@ -256,7 +257,7 @@ else
             stocks.Add(stock);
         }
 
-        return stocks
+        return stocks;
     }
 
     /// <summary>
